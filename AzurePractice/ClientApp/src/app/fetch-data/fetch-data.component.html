@@ -1,0 +1,26 @@
+<h1 id="tableLabel">Availble Products</h1>
+
+<p *ngIf="!products"><em>Loading...</em></p>
+<a routerLink="/add">Add Product</a>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="products">
+  <thead>
+    <tr>
+      <th>Product Category</th>
+      <th>Product Name</th>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.partitionKey }}</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.price }}</td>
+      <td><img height="50" width="50" src="{{ product.imageSrc }}" /></td>
+      <td><button class="btn btn-link" (click)="handleDelete(product)">Delete</button></td>
+      <td><button class="btn btn-link" (click)="handleOrder(product)">Order</button></td>
+    </tr>
+  </tbody>
+</table>
